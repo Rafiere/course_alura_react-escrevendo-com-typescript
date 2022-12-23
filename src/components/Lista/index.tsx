@@ -1,29 +1,28 @@
 /* O "Functional Component" é a nova forma de escrevermos um componente no React. */
 
-const Lista = () => {
-  const tarefas = [
-    {
-      tarefa: "React",
-      tempo: "02:00:00",
-    },
-    {
-      tarefa: "JavaScript",
-      tempo: "01:00:00",
-    },
-  ];
+import { Tarefa } from "../../types/tarefa";
+import Item from "./Item";
+import style from "./Lista.module.scss";
 
+interface ListaProps {
+  tarefas: Tarefa[];
+}
+
+const Lista = (props: ListaProps) => {
   return (
-    <aside>
-      <h2>Estudos do Dia</h2>
+    <aside className={style.listaTarefas}>
+      <h2>Estudos do dia</h2>
       <ul>
-        {tarefas.map((tarefa, index) => {
-          return (
-            <li key={index}>
-              <h3>{tarefa.tarefa}</h3>
-              <span>{tarefa.tempo}</span>
-            </li>
-          );
-        })}
+        {props.tarefas.map((item, index) => (
+          <Item
+            key={index}
+            tarefa={item.tarefa}
+            tempo={item.tempo}
+            completado={item.completado}
+            selecionado={item.selecionado}
+            id={item.id}
+          />
+        ))}
       </ul>
     </aside>
   );

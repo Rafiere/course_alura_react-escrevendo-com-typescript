@@ -1,9 +1,16 @@
 import React from "react";
 
-const Botao = () => {
+import style from "./Botao.module.scss";
+
+interface BotaoProps {
+  texto: string;
+  type?: "button" | "submit" | "reset" | undefined;
+}
+
+const Botao = ({ texto, type = "button" }: BotaoProps) => {
   return (
-    <button>
-      <></>
+    <button className={style.botao} type={type}>
+      {texto}
     </button>
   );
 };
