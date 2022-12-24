@@ -6,6 +6,7 @@ import style from "./Lista.module.scss";
 
 interface ListaProps {
   tarefas: Tarefa[];
+  selecionaTarefa: (tarefaSelecionada: Tarefa) => void;
 }
 
 const Lista = (props: ListaProps) => {
@@ -21,6 +22,7 @@ const Lista = (props: ListaProps) => {
             completado={item.completado}
             selecionado={item.selecionado}
             id={item.id}
+            selecionaTarefa={props.selecionaTarefa}
           />
         ))}
       </ul>
